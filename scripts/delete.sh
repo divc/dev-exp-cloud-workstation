@@ -24,14 +24,14 @@ echo $DELETECLUSTER
 if [ "$DELETEWORKSTATIONS" == "yes" ] 
 then
     echo Deleting your Workstations.
-    NUMWORKSTATIONS="$(curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstations/ | (grep -c '"name":'))"
-    WORKSTATIONS="$(curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstations/ | (grep -oP '"name":\K.*') | tr -d '"')"
+    NUMWORKSTATIONS="$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstations/ | (grep -c '"name":'))"
+    WORKSTATIONS="$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstations/ | (grep -oP '"name":\K.*') | tr -d '"')"
     for ((i=1;i<=$NUMWORKSTATIONS;i++)); 
     do
         WORKSTATIONSUFFIX=$(echo $WORKSTATIONS| cut -d',' -f $i)
         WORKSTATIONPATH=$PREFIX$WORKSTATIONSUFFIX
         WORKSTATIONPATH=$(echo $WORKSTATIONPATH | tr -d ' ')
-        curl -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+        curl -s -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
             -H "Content-Type: application/json" \
             $WORKSTATIONPATH
     while (curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -49,14 +49,14 @@ fi
 if [ "$DELETECONFIGS" == "yes" ] 
 then
     echo Deleting your Workstation Configs.
-    NUMCONFIGS="$(curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstationConfigs/ | (grep -c '"name":'))"
-    CONFIGS="$(curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstationConfigs/ | (grep -oP '"name":\K.*') | tr -d '"')"
+    NUMCONFIGS="$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstationConfigs/ | (grep -c '"name":'))"
+    CONFIGS="$(curl -s -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}/workstationConfigs/ | (grep -oP '"name":\K.*') | tr -d '"')"
     for ((i=1;i<=$NUMCONFIGS;i++)); 
     do
         CONFIGSUFFIX=$(echo $CONFIGS| cut -d',' -f $i)
         CONFIGPATH=$PREFIX$CONFIGSUFFIX
         CONFIGPATH=$(echo $CONFIGPATH | tr -d ' ')
-        curl -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+        curl -s -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
             -H "Content-Type: application/json" \
             $CONFIGPATH
     while (curl -s -H "Authorization: Bearer $(gcloud auth print-access-token)" \
@@ -74,7 +74,7 @@ if [ "$DELETECLUSTER" == "yes" ]
 then
     #Cluster Deletion 
     echo Deleting your Cluster. 
-    curl -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+    curl -s -X DELETE -H "Authorization: Bearer $(gcloud auth print-access-token)" \
             -H "Content-Type: application/json" \
             https://workstations.googleapis.com/v1alpha1/projects/${PROJECT}/locations/us-central1/workstationClusters/${CLUSTER_ID}   
 
