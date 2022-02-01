@@ -1,6 +1,6 @@
 {
     "idleTimeout": "7200s",
-    "fastStartWorkstationCount": 2,
+    "fastStartWorkstationCount": 1,
     "container": {"image": "gcr.io/cloud-workstations-external/idea-c:latest"},
     "machine_type": "e2-standard-4",
     "persistentDirectories": {

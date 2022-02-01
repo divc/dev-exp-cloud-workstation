@@ -1,6 +1,6 @@
 {
     "idleTimeout": "3600s",
-    "fastStartWorkstationCount": 2,
+    "fastStartWorkstationCount": 1,
     "container": {"image": "gcr.io/cloud-workstations-external/openvscode-server:latest"},
     "machine_type": "e2-standard-4",
     "persistentDirectories": {
