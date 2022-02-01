@@ -9,8 +9,15 @@ Creating a Cluster:
 
 Creating a Config:
 1. Create a config.json file describing the config you want to create. A sample config.json can be found in the samples folder.
-2. Export PROJECT, REGION, and CLUSTER_ID, and CONFIG_NAME as environment variables in your Cloud Shell. CONFIG_NAME should be the name of the config you are attempting to create. 
-3. Run the create-config.sh script. "sh create-config.sh"
+2. Provide PROJECT, REGION, and CLUSTER_ID, and CONFIG_NAME as the command line args while running the script. The args are as follows 
+| Args | Description | Usage |
+| :---: | :---: | :---: |
+| -r | Region Name | -r us-central1 |
+| -p | Project Name | -p project-a |
+| -f | Workstation config filename | -f ../rstudio-config.json |
+| -w | Workstation cluster name | -w appdev-workstation-cluster |
+| -c | Configuration name | -c rstudio-config |
+3. Run the create-config.sh script. "sh create-config.sh -r us-central1 -p project-a -w appdev-workstation-cluster -c rstudio-config -f ../rstudio-config.json"
 4. The script will terminate once the config is created and available. It is resilient to Cloud Shell automatic disconnects. This should take about 1 minute.
 
 Cleaning Up:
