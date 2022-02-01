@@ -14,7 +14,7 @@ Creating a Config:
 4. The script will terminate once the config is created and available. It is resilient to Cloud Shell automatic disconnects. This should take about 1 minute.
 
 Cleaning Up:
-1. Export PROJECT and CLUSTER_ID as environment variables in your Cloud Shell.
+1. Export PROJECT, REGION, and CLUSTER_ID as environment variables in your Cloud Shell.
 2. To delete all workstations on a cluster, run the delete.sh script with workstations as an argument via Cloud shell. "sh delete.sh workstations"
 3. To delete all configs on a cluster, run the delete.sh script with configs as an argument via Cloud shell. "sh delete.sh configs". Note, this will also delete all workstations on the cluster since these workstations are dependant on the configs.
 5. To delete a cluster, run the delete.sh script with cluster as an argument via Cloud shell. "sh delete.sh cluster". This will delete the cluster and all associated resources with it, including configs and workstations which reside on the cluster. 
