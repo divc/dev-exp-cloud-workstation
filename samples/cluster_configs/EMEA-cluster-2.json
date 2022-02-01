@@ -1,0 +1,5 @@
+{
+    "controlPlaneIpv4Cidr": "10.132.30.0/24",
+    "network": "projects/auverk-cert/global/networks/workstation-vpc",
+    "subnetwork": "projects/auverk-cert/regions/europe-west1/subnetworks/workstation-vpc"
+}

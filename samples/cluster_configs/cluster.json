@@ -1,0 +1,5 @@
+{
+  "network": "projects/your-project/global/networks/default",
+  "subnetwork": "projects/your-project/regions/us-central1/subnetworks/default",
+  "controlPlaneIpv4Cidr": "10.20.20.0/24"
+}
