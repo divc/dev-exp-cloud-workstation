@@ -1,9 +1,8 @@
-#!/bin/sh
-while getopts r:p:f:w:c: flag
+while getopts p:r:f:w:c: flag
 do
     case "${flag}" in
-        r) region=${OPTARG};;
         p) project=${OPTARG};;
+        r) region=${OPTARG};;
         f) filename=${OPTARG};;
         w) clusterid=${OPTARG};;
         c) configname=${OPTARG};;
